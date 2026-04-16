@@ -1,5 +1,6 @@
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { prisma } from "@/lib/prisma";
 
 // Complete set of demo users — admin, manager, AND customers all work
 const DEMO_USERS = [
@@ -85,10 +86,8 @@ export const authOptions: NextAuthOptions = {
         // Production: check DB
         if (process.env.DEMO_MODE !== "true") {
           try {
-            const prismaModule = await import("@prisma/client");
-            const db = new prismaModule.default.PrismaClient();
             const bcrypt = await import("bcryptjs");
-            const user = await db.user.findUnique({
+            const user = await prisma.user.findUnique({
               where: { email: credentials.email },
               include: { org: true },
             });
