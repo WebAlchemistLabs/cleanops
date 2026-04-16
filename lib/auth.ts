@@ -86,9 +86,8 @@ export const authOptions: NextAuthOptions = {
         if (process.env.DEMO_MODE !== "true") {
           try {
             const prismaModule = await import("@prisma/client");
-            const PrismaClient = prismaModule.PrismaClient;
+            const db = new prismaModule.default.PrismaClient();
             const bcrypt = await import("bcryptjs");
-            const db = new PrismaClient();
             const user = await db.user.findUnique({
               where: { email: credentials.email },
               include: { org: true },
