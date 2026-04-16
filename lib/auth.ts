@@ -22,7 +22,6 @@ const DEMO_USERS = [
     orgId: "org-001",
     orgName: "Pristine Pro Cleaning",
   },
-  // Customer accounts — these all work for login
   {
     id: "customer-001",
     name: "Sarah Mitchell",
@@ -65,7 +64,6 @@ export const authOptions: NextAuthOptions = {
       async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) return null;
 
-        // Check all demo users — customers included
         const demo = DEMO_USERS.find(
           (u) =>
             u.email.toLowerCase() === credentials.email.toLowerCase() &&
@@ -83,20 +81,24 @@ export const authOptions: NextAuthOptions = {
           } as any;
         }
 
-        // Production: check DB
         if (process.env.DEMO_MODE !== "true") {
           try {
             const bcrypt = await import("bcryptjs");
+
             const user = await prisma.user.findUnique({
               where: { email: credentials.email },
               include: { org: true },
             });
+
             if (!user?.hashedPassword) return null;
+
             const valid = await bcrypt.compare(
               credentials.password,
               user.hashedPassword
             );
+
             if (!valid) return null;
+
             return {
               id: user.id,
               name: user.name,

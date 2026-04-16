@@ -1,19 +1,211 @@
-generator client { provider = "prisma-client-js" }
-datasource db { provider = "postgresql"; url = env("DATABASE_URL") }
-enum Role { ADMIN MANAGER CUSTOMER STAFF }
-enum JobStatus { PENDING CONFIRMED IN_PROGRESS COMPLETED CANCELLED RESCHEDULED }
-enum ServiceType { STANDARD DEEP_CLEAN MOVE_IN_OUT OFFICE POST_CONSTRUCTION AIRBNB }
-enum PaymentStatus { PENDING PROCESSING PAID FAILED REFUNDED }
-enum QuoteStatus { PENDING SENT APPROVED REJECTED CONVERTED }
+generator client {
+  provider = "prisma-client-js"
+}
 
-model Organization { id String @id @default(cuid()); name String; slug String @unique; phone String?; email String?; address String?; city String?; province String?; website String?; createdAt DateTime @default(now()); updatedAt DateTime @updatedAt; users User[]; customers Customer[]; jobs Job[]; crews Crew[]; staff StaffMember[] }
-model User { id String @id @default(cuid()); name String?; email String @unique; hashedPassword String?; role Role @default(CUSTOMER); orgId String?; org Organization? @relation(fields:[orgId],references:[id]); createdAt DateTime @default(now()); customer Customer?; accounts Account[]; sessions Session[] }
-model Account { id String @id @default(cuid()); userId String; type String; provider String; providerAccountId String; refresh_token String? @db.Text; access_token String? @db.Text; expires_at Int?; user User @relation(fields:[userId],references:[id],onDelete:Cascade); @@unique([provider,providerAccountId]) }
-model Session { id String @id @default(cuid()); sessionToken String @unique; userId String; expires DateTime; user User @relation(fields:[userId],references:[id],onDelete:Cascade) }
-model Customer { id String @id @default(cuid()); userId String? @unique; user User? @relation(fields:[userId],references:[id]); orgId String; org Organization @relation(fields:[orgId],references:[id]); firstName String; lastName String; email String; phone String?; city String?; province String?; address String?; isVIP Boolean @default(false); totalSpent Float @default(0); jobCount Int @default(0); tags String[]; createdAt DateTime @default(now()); jobs Job[]; quotes Quote[] }
-model Job { id String @id @default(cuid()); orgId String; org Organization @relation(fields:[orgId],references:[id]); customerId String; customer Customer @relation(fields:[customerId],references:[id]); crewId String?; crew Crew? @relation(fields:[crewId],references:[id]); serviceType ServiceType; status JobStatus @default(PENDING); scheduledAt DateTime; duration Int; address String; city String; province String; price Float; paid Boolean @default(false); notes String?; recurrence String @default("NONE"); createdAt DateTime @default(now()); invoices Invoice[] }
-model Invoice { id String @id @default(cuid()); jobId String; job Job @relation(fields:[jobId],references:[id]); amount Float; paid Boolean @default(false); paidAt DateTime?; paymentStatus PaymentStatus @default(PENDING); stripeSessionId String? @unique; stripePaymentIntentId String? @unique; createdAt DateTime @default(now()) }
-model Quote { id String @id @default(cuid()); customerId String; customer Customer @relation(fields:[customerId],references:[id]); serviceType ServiceType; address String; city String; estimatedPrice Float; notes String?; status QuoteStatus @default(PENDING); validUntil DateTime; convertedJobId String?; createdAt DateTime @default(now()) }
-model StaffMember { id String @id @default(cuid()); orgId String; org Organization @relation(fields:[orgId],references:[id]); firstName String; lastName String; email String; role String @default("Cleaner"); isActive Boolean @default(true); rating Float?; jobsCompleted Int @default(0); crews CrewMember[] }
-model Crew { id String @id @default(cuid()); orgId String; org Organization @relation(fields:[orgId],references:[id]); name String; isActive Boolean @default(true); members CrewMember[]; jobs Job[] }
-model CrewMember { id String @id @default(cuid()); crewId String; crew Crew @relation(fields:[crewId],references:[id]); staffId String; staff StaffMember @relation(fields:[staffId],references:[id]); @@unique([crewId,staffId]) }
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  MANAGER
+  CUSTOMER
+  STAFF
+}
+
+enum JobStatus {
+  PENDING
+  CONFIRMED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+  RESCHEDULED
+}
+
+enum ServiceType {
+  STANDARD
+  DEEP_CLEAN
+  MOVE_IN_OUT
+  OFFICE
+  POST_CONSTRUCTION
+  AIRBNB
+}
+
+enum PaymentStatus {
+  PENDING
+  PROCESSING
+  PAID
+  FAILED
+  REFUNDED
+}
+
+enum QuoteStatus {
+  PENDING
+  SENT
+  APPROVED
+  REJECTED
+  CONVERTED
+}
+
+model Organization {
+  id        String        @id @default(cuid())
+  name      String
+  slug      String        @unique
+  phone     String?
+  email     String?
+  address   String?
+  city      String?
+  province  String?
+  website   String?
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+  users     User[]
+  customers Customer[]
+  jobs      Job[]
+  crews     Crew[]
+  staff     StaffMember[]
+}
+
+model User {
+  id             String        @id @default(cuid())
+  name           String?
+  email          String        @unique
+  hashedPassword String?
+  role           Role          @default(CUSTOMER)
+  orgId          String?
+  org            Organization? @relation(fields: [orgId], references: [id])
+  createdAt      DateTime      @default(now())
+  customer       Customer?
+  accounts       Account[]
+  sessions       Session[]
+}
+
+model Account {
+  id                String @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  user              User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Customer {
+  id         String       @id @default(cuid())
+  userId     String?      @unique
+  user       User?        @relation(fields: [userId], references: [id])
+  orgId      String
+  org        Organization @relation(fields: [orgId], references: [id])
+  firstName  String
+  lastName   String
+  email      String
+  phone      String?
+  city       String?
+  province   String?
+  address    String?
+  isVIP      Boolean      @default(false)
+  totalSpent Float        @default(0)
+  jobCount   Int          @default(0)
+  tags       String[]
+  createdAt  DateTime     @default(now())
+  jobs       Job[]
+  quotes     Quote[]
+}
+
+model Job {
+  id          String       @id @default(cuid())
+  orgId       String
+  org         Organization @relation(fields: [orgId], references: [id])
+  customerId  String
+  customer    Customer     @relation(fields: [customerId], references: [id])
+  crewId      String?
+  crew        Crew?        @relation(fields: [crewId], references: [id])
+  serviceType ServiceType
+  status      JobStatus    @default(PENDING)
+  scheduledAt DateTime
+  duration    Int
+  address     String
+  city        String
+  province    String
+  price       Float
+  paid        Boolean      @default(false)
+  notes       String?
+  recurrence  String       @default("NONE")
+  createdAt   DateTime     @default(now())
+  invoices    Invoice[]
+}
+
+model Invoice {
+  id                    String        @id @default(cuid())
+  jobId                 String
+  job                   Job           @relation(fields: [jobId], references: [id])
+  amount                Float
+  paid                  Boolean       @default(false)
+  paidAt                DateTime?
+  paymentStatus         PaymentStatus @default(PENDING)
+  stripeSessionId       String?       @unique
+  stripePaymentIntentId String?       @unique
+  createdAt             DateTime      @default(now())
+}
+
+model Quote {
+  id             String      @id @default(cuid())
+  customerId     String
+  customer       Customer    @relation(fields: [customerId], references: [id])
+  serviceType    ServiceType
+  address        String
+  city           String
+  estimatedPrice Float
+  notes          String?
+  status         QuoteStatus @default(PENDING)
+  validUntil     DateTime
+  convertedJobId String?
+  createdAt      DateTime    @default(now())
+}
+
+model StaffMember {
+  id            String       @id @default(cuid())
+  orgId         String
+  org           Organization @relation(fields: [orgId], references: [id])
+  firstName     String
+  lastName      String
+  email         String
+  role          String       @default("Cleaner")
+  isActive      Boolean      @default(true)
+  rating        Float?
+  jobsCompleted Int          @default(0)
+  crews         CrewMember[]
+}
+
+model Crew {
+  id       String       @id @default(cuid())
+  orgId    String
+  org      Organization @relation(fields: [orgId], references: [id])
+  name     String
+  isActive Boolean      @default(true)
+  members  CrewMember[]
+  jobs     Job[]
+}
+
+model CrewMember {
+  id      String      @id @default(cuid())
+  crewId  String
+  crew    Crew        @relation(fields: [crewId], references: [id])
+  staffId String
+  staff   StaffMember @relation(fields: [staffId], references: [id])
+
+  @@unique([crewId, staffId])
+}
