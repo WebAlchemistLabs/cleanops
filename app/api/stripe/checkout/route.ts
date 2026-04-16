@@ -14,7 +14,7 @@ export async function POST(req: NextRequest) {
   }
   try {
     const Stripe = (await import("stripe")).default;
-    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2024-06-20" });
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, { apiVersion: "2023-10-16" });
     const base = process.env.NEXTAUTH_URL || "http://localhost:3000";
     const chargeAmt = depositOnly ? Math.round(amount * 0.25 * 100) : Math.round(amount * 100);
     const s = await stripe.checkout.sessions.create({
