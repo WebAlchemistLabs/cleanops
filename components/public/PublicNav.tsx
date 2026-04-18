@@ -24,7 +24,7 @@ export function PublicNav() {
         <span className="font-medium">Call:</span>{" "}
         <a href="tel:4165550100" className="text-brand-blue-dark font-semibold hover:underline">(416) 555-0100</a>
         &nbsp;•&nbsp;
-        <span className="font-medium text-brand-pink-dark">Female-owned &amp; operated</span>
+        <span className="font-medium text-brand-pink-dark">Female owned and operated</span>
       </div>
 
       {/* Main nav */}

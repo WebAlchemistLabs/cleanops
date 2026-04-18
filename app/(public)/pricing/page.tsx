@@ -6,10 +6,10 @@ import { CheckCircle, ArrowRight } from "lucide-react";
 const SERVICES = [
   { name:"Standard Clean", from:"$120", duration:"2–3 hrs", includes:["Vacuuming all floors","Mopping","Dusting all surfaces","Bathrooms scrubbed","Kitchen surfaces & sink","Mirrors & glass"] },
   { name:"Deep Clean", from:"$220", duration:"3–5 hrs", includes:["Everything in Standard","Inside oven & fridge","Inside cabinets","Baseboards & trim","Window sills","Behind appliances"] },
-  { name:"Move-In / Move-Out", from:"$280", duration:"4–6 hrs", includes:["Everything in Deep Clean","Inside all closets","Inside dishwasher","Final walkthrough","Landlord-ready standard","Inspection guaranteed"] },
-  { name:"Office Clean", from:"$180", duration:"2–4 hrs", includes:["Vacuuming & mopping","Desk & surface wipe","Washroom sanitize","Kitchen clean","Trash removal","After-hours available"] },
-  { name:"Post-Construction", from:"$350", duration:"4–8 hrs", includes:["Dust removal all surfaces","Debris sweeping","Window & glass cleaning","Floor scrubbing","Vent cleaning","Final inspection"] },
-  { name:"Airbnb Turnover", from:"$95", duration:"1.5–3 hrs", includes:["Full clean & sanitize","Linen swap","Bathroom restock","Kitchen reset","Trash removal","Guest-ready check"] },
+  { name:"Move In / Move Out", from:"$280", duration:"4–6 hrs", includes:["Everything in Deep Clean","Inside all closets","Inside dishwasher","Final walkthrough","Landlord ready standard","Inspection guaranteed"] },
+  { name:"Office Clean", from:"$180", duration:"2–4 hrs", includes:["Vacuuming & mopping","Desk and surface wipe","Washroom sanitize","Kitchen clean","Trash removal","After hours available"] },
+  { name:"Post Construction", from:"$350", duration:"4–8 hrs", includes:["Dust removal all surfaces","Debris sweeping","Window & glass cleaning","Floor scrubbing","Vent cleaning","Final inspection"] },
+  { name:"Airbnb Turnover", from:"$95", duration:"1.5–3 hrs", includes:["Full clean & sanitize","Linen swap","Bathroom restock","Kitchen reset","Trash removal","Guest ready check"] },
 ];
 
 export default function PricingPage() {

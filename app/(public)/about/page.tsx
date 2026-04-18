@@ -4,7 +4,7 @@ import { PublicFooter } from "@/components/public/PublicFooter";
 import { ArrowRight, CheckCircle, Heart, Star, Users, Award } from "lucide-react";
 
 const TEAM = [
-  { name: "Jordan Blake", role: "Lead Cleaner, Alpha Team", rating: 4.9, jobs: 142, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80", initials: "JB" },
+  { name: "Jordan Blake", role: "Lead Cleaner, Alpha Team", rating: 4.9, jobs: 142, img: "https://i.pinimg.com/736x/a8/aa/aa/a8aaaa6bbb477fad8abec324630f1fa1.jpg", initials: "JB" },
   { name: "Maria Santos", role: "Senior Cleaner, Alpha Team", rating: 4.8, jobs: 128, img: "https://images.unsplash.com/photo-1494790108755-2616b612b277?w=200&q=80", initials: "MS" },
   { name: "Kevin Park", role: "Lead Cleaner, Beta Team", rating: 4.7, jobs: 118, img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80", initials: "KP" },
   { name: "Aisha Thompson", role: "Cleaner, Beta Team", rating: 4.6, jobs: 94, img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80", initials: "AT" },
@@ -13,7 +13,7 @@ const TEAM = [
 const VALUES = [
   { icon: Heart, title: "We care about your home", desc: "We treat every home as if it were our own — with attention to detail, care, and respect." },
   { icon: Star, title: "Quality without compromise", desc: "If a clean isn't up to our standard, we come back and fix it. No questions asked." },
-  { icon: Users, title: "Vetted & trusted team", desc: "Every cleaner is background-checked, trained, and insured before joining our team." },
+  { icon: Users, title: "Vetted and trusted team", desc: "Every cleaner is background checked, trained, and insured before joining our team." },
   { icon: Award, title: "Consistent every time", desc: "We use a standardized checklist for every clean so results are reliable and repeatable." },
 ];
 
@@ -28,7 +28,7 @@ export default function AboutPage() {
             <div>
               <div className="chip chip-pink inline-flex mb-5">About Us</div>
               <h1 className="text-5xl font-display font-bold text-text-primary mb-5">Toronto&apos;s most trusted cleaning team</h1>
-              <p className="text-xl text-text-secondary leading-relaxed mb-6">Founded in 2019, Pristine Pro Cleaning was built on a simple idea — cleaning should be reliable, professional, and stress-free. We&apos;re a female-owned business based in Toronto, serving hundreds of happy customers across the GTA.</p>
+              <p className="text-xl text-text-secondary leading-relaxed mb-6">Founded in 2019, Pristine Pro Cleaning was built on a simple idea cleaning should be reliable, professional, and stress free. We&apos;re a female owned business based in Toronto, serving hundreds of happy customers across the GTA.</p>
               <div className="grid grid-cols-3 gap-6 pt-6 border-t border-border">
                 {[{v:"500+",l:"Clients Served"},{v:"4.9★",l:"Avg Rating"},{v:"2019",l:"Est. Toronto"}].map(s => (
                   <div key={s.l} className="text-center">
@@ -42,7 +42,7 @@ export default function AboutPage() {
               <img src="https://images.unsplash.com/photo-1556909172-54557c7e4fb7?w=800&q=85&fit=crop" alt="Our cleaning team" className="w-full h-full object-cover" />
               <div className="absolute inset-0" style={{ background: "linear-gradient(135deg,rgba(79,195,247,0.1),rgba(244,143,177,0.08))" }} />
               <div className="absolute bottom-4 left-4 bg-white/95 rounded-2xl px-4 py-3 shadow-soft">
-                <p className="text-xs font-bold text-brand-pink-dark">Female-owned &amp; operated</p>
+                <p className="text-xs font-bold text-brand-pink-dark">Female owned and operated</p>
                 <p className="text-xs text-text-muted mt-0.5">Est. Toronto, 2019</p>
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <div className="chip chip-blue inline-flex mb-4">Our Team</div>
             <h2 className="text-3xl font-display font-bold text-text-primary mb-3">The people behind the clean</h2>
-            <p className="text-text-secondary">Every member of our team is background-checked, trained, and passionate about quality</p>
+            <p className="text-text-secondary">Every member of our team is background checked, trained, and passionate about quality</p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {TEAM.map(m => (

@@ -27,12 +27,12 @@ export default function ContactPage() {
         <div className="container-pub">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <div>
-              <div className="chip chip-pink inline-flex mb-5">Friendly · Professional · Female-owned</div>
+              <div className="chip chip-pink inline-flex mb-5">Friendly · Professional · Female owned</div>
               <h1 className="text-5xl font-display font-bold text-text-primary mb-4">
                 Let&apos;s talk about your <span className="text-gradient">clean space</span>
               </h1>
               <p className="text-lg text-text-secondary leading-relaxed mb-7">
-                Questions, quotes, or scheduling help — send us a message and we&apos;ll guide you with clear, honest answers.
+                Questions, quotes, or scheduling help send us a message and we&apos;ll guide you with clear, honest answers.
               </p>
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link href="/book" className="btn-primary">Book a Clean</Link>
@@ -171,7 +171,7 @@ export default function ContactPage() {
                 </h3>
                 <p className="text-sm text-text-secondary mb-3">Serving Toronto and surrounding areas with flexible scheduling and friendly service.</p>
                 <div className="flex flex-wrap gap-2">
-                  {["Fast response","Eco options","Insured","Female-owned"].map(t => (
+                  {["Fast response","Eco options","Insured","Female owned"].map(t => (
                     <span key={t} className="chip chip-blue text-[10px]">{t}</span>
                   ))}
                 </div>

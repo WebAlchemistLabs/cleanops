@@ -33,7 +33,7 @@ const STEPS = [
 const TRUST = [
   { icon: Shield, label: "Fully Insured", desc: "All staff bonded and insured for your peace of mind" },
   { icon: Users, label: "Vetted Cleaners", desc: "Background-checked and trained professionals only" },
-  { icon: Award, label: "5-Star Rated", desc: "4.9 average across 500+ verified reviews" },
+  { icon: Award, label: "5 Star Rated", desc: "4.9 average across 500+ verified reviews" },
   { icon: CheckCircle, label: "Satisfaction Guaranteed", desc: "Not happy? We come back and fix it free of charge" },
 ];
 
@@ -148,7 +148,7 @@ export default function HomePage() {
           <div className="text-center mb-14">
             <div className="chip chip-pink inline-flex mb-4">Our Services</div>
             <h2 className="text-4xl font-display font-bold text-text-primary mb-4">Everything sparkling clean</h2>
-            <p className="text-text-secondary max-w-lg mx-auto">Every clean delivered by a vetted, trained crew — residential and commercial, one-time or recurring</p>
+            <p className="text-text-secondary max-w-lg mx-auto">Every clean delivered by a vetted, trained crew, residential and commercial, one time or recurring</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {SERVICES.map((s, i) => (
@@ -197,7 +197,7 @@ export default function HomePage() {
           <div className="text-center mb-14">
             <div className="chip chip-blue inline-flex mb-4">How It Works</div>
             <h2 className="text-4xl font-display font-bold text-text-primary mb-4">Four simple steps</h2>
-            <p className="text-text-secondary">From booking to a spotless home — we make it effortless</p>
+            <p className="text-text-secondary">From booking to a spotless home, we make it effortless</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {STEPS.map((step, i) => (
@@ -226,11 +226,11 @@ export default function HomePage() {
         <div className="container-pub">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center">
             <div>
-              <div className="chip chip-pink inline-flex mb-5">Real Results</div>
+              <div className="chip chip-pink inline-flex mb-5">Recent Results</div>
               <h2 className="text-4xl font-display font-bold text-text-primary mb-5">See the difference we make</h2>
-              <p className="text-text-secondary leading-relaxed mb-6">Every photo is a real client result — no stock photos, no filters. Just the genuine before and after of a Pristine Pro clean.</p>
+              <p className="text-text-secondary leading-relaxed mb-6">Take a look at the quality we deliver in homes and businesses across Toronto and the GTA.</p>
               <ul className="space-y-3 mb-8">
-                {["Real client photos — no stock imagery","Side-by-side before &amp; after comparison","Every service type represented","Consistent results every visit"].map(item => (
+                {["Before and after photos from recent cleans","Kitchens, bathrooms, living spaces, and offices","Standard, deep, move in and move out, and more","Consistent quality on every visit"].map(item => (
                   <li key={item} className="flex items-center gap-3 text-sm text-text-secondary">
                     <CheckCircle className="w-4 h-4 text-brand-blue-dark shrink-0" />
                     <span dangerouslySetInnerHTML={{ __html: item }} />
@@ -299,7 +299,7 @@ export default function HomePage() {
         <div className="container-pub">
           <div className="text-center">
             <h2 className="text-4xl font-display font-bold text-text-primary mb-4">Ready for a spotless home?</h2>
-            <p className="text-text-secondary mb-8 max-w-md mx-auto text-lg">Book your clean in 2 minutes. Vetted crews, online payment, real-time updates.</p>
+            <p className="text-text-secondary mb-8 max-w-md mx-auto text-lg">Book your clean in 2 minutes. Vetted crews, online payment, real time updates.</p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link href="/book" className="btn-primary text-base">
                 Book a Clean Now <ArrowRight className="w-4 h-4" />

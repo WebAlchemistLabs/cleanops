@@ -38,17 +38,17 @@ export function getInitials(first: string, last: string): string {
 export const SERVICE_LABELS: Record<string, string> = {
   STANDARD: "Standard Clean",
   DEEP_CLEAN: "Deep Clean",
-  MOVE_IN_OUT: "Move-In / Move-Out",
+  MOVE_IN_OUT: "Move In / Move Out",
   OFFICE: "Office Clean",
-  POST_CONSTRUCTION: "Post-Construction",
+  POST_CONSTRUCTION: "Post Construction",
   AIRBNB: "Airbnb Turnover",
 };
 
 export const SERVICE_DESCRIPTIONS: Record<string, string> = {
   STANDARD: "Regular home or apartment clean. Vacuuming, mopping, dusting, bathrooms, and kitchen surfaces.",
-  DEEP_CLEAN: "Thorough top-to-bottom clean including inside appliances, baseboards, and detailed scrubbing.",
-  MOVE_IN_OUT: "Full clean for vacant units. Bring empty spaces to spotless, inspection-ready condition.",
-  OFFICE: "Professional commercial office cleaning. After-hours scheduling available.",
+  DEEP_CLEAN: "Thorough top to bottom clean including inside appliances, baseboards, and detailed scrubbing.",
+  MOVE_IN_OUT: "Full clean for vacant units. Bring empty spaces to spotless, inspection ready condition.",
+  OFFICE: "Professional commercial office cleaning. After hours scheduling available.",
   POST_CONSTRUCTION: "Heavy-duty cleanup after renovations or construction. Dust, debris, and residue removal.",
   AIRBNB: "Fast turnaround clean between guest stays. Linen swap, restocking, and full clean included.",
 };
@@ -73,12 +73,12 @@ export const SERVICE_DURATION: Record<string, string> = {
 
 // Unsplash image URLs for each service (clean, bright, relevant)
 export const SERVICE_IMAGES: Record<string, string> = {
-  STANDARD: "https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80",
-  DEEP_CLEAN: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-  MOVE_IN_OUT: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80",
-  OFFICE: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
-  POST_CONSTRUCTION: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80",
-  AIRBNB: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80",
+  STANDARD: "https://images.unsplash.com/photo-1758273238741-f33ab240baa0?q=80&w=1631&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  DEEP_CLEAN: "https://images.unsplash.com/photo-1686178827149-6d55c72d81df?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  MOVE_IN_OUT: "https://plus.unsplash.com/premium_photo-1663036974741-7a5d5c8822f1?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  OFFICE: "https://plus.unsplash.com/premium_photo-1661963899181-3adc0a644f7b?q=80&w=862&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  POST_CONSTRUCTION: "https://images.unsplash.com/photo-1718816281270-ed6ef8357859?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  AIRBNB: "https://images.unsplash.com/photo-1539693010221-cd218dfe6565?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 };
 
 export const SERVICE_COLORS: Record<string, string> = {
