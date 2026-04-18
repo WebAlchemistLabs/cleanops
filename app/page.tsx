@@ -166,7 +166,7 @@ export default function HomePage() {
                   />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(255,255,255,0.9) 100%)" }} />
                   <div className="absolute top-3 left-3">
-                    <div className="chip chip-blue text-xs shadow-sm">{s.price}</div>
+                    <div className="chip text-xs shadow-sm bg-white text-brand-blue-dark" style={{ backgroundColor: "#ffffff" }}>{s.price}</div>
                   </div>
                 </div>
                 {/* Content */}
