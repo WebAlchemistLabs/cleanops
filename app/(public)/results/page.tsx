@@ -1,6 +1,9 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import { PublicNav } from "@/components/public/PublicNav";
 import { PublicFooter } from "@/components/public/PublicFooter";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import Link from "next/link";
 
 const RESULTS = [
@@ -13,6 +16,17 @@ const RESULTS = [
 ];
 
 export default function ResultsPage() {
+  const [activeImage, setActiveImage] = useState<{ src: string; service: string } | null>(null);
+
+  useEffect(() => {
+    if (!activeImage) return;
+    const onKeyDown = (e: KeyboardEvent) => { if (e.key === "Escape") setActiveImage(null); };
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+    return () => { document.body.style.overflow = prev; window.removeEventListener("keydown", onKeyDown); };
+  }, [activeImage]);
+
   return (
     <div className="min-h-screen bg-white">
       <PublicNav />
@@ -25,7 +39,7 @@ export default function ResultsPage() {
             See the <span className="text-gradient">difference</span>
           </h1>
           <p className="text-xl text-text-secondary max-w-lg mx-auto">
-            Every photo shows the <strong>Before</strong> and <strong>After</strong> 
+            Every photo shows the <strong>Before</strong> and <strong>After</strong>
           </p>
         </div>
       </section>
@@ -35,22 +49,31 @@ export default function ResultsPage() {
         <div className="container-pub">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {RESULTS.map((r) => (
-              <div key={r.id} className="pub-card overflow-hidden group">
+              <button
+                key={r.id}
+                type="button"
+                onClick={() => setActiveImage({ src: r.image, service: r.service })}
+                className="pub-card overflow-hidden group text-left w-full cursor-zoom-in focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-blue/50"
+                aria-label={`Open larger photo for ${r.service}`}
+              >
                 <div className="relative" style={{ height: 260 }}>
                   <img
                     src={r.image}
                     alt={`${r.service} before and after`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                   <div className="absolute top-3 left-3 px-3 py-1.5 rounded-full text-xs font-bold text-white shadow-soft bg-brand-blue/90">
                     Before &amp; After
                   </div>
+                  <div className="absolute bottom-3 right-3 bg-black/55 text-white text-xs font-semibold px-3 py-1.5 rounded-full backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
+                    Click to enlarge
+                  </div>
                 </div>
                 <div className="p-4">
                   <p className="text-sm font-semibold text-text-primary">{r.service}</p>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
@@ -64,6 +87,38 @@ export default function ResultsPage() {
           <Link href="/book" className="btn-primary text-base">Book a Clean <ArrowRight className="w-4 h-4" /></Link>
         </div>
       </section>
+
+      {activeImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-8" role="dialog" aria-modal="true" aria-label={`${activeImage.service} image preview`}>
+          <button
+            type="button"
+            aria-label="Close image preview"
+            className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"
+            onClick={() => setActiveImage(null)}
+          />
+          <div className="relative w-full max-w-5xl rounded-3xl overflow-hidden bg-white shadow-[0_24px_80px_rgba(0,0,0,0.35)] border border-white/30">
+            <div className="flex items-center justify-between px-5 py-4 border-b border-border bg-white/95">
+              <p className="font-display font-semibold text-text-primary">{activeImage.service}</p>
+              <button
+                type="button"
+                onClick={() => setActiveImage(null)}
+                className="w-9 h-9 rounded-full flex items-center justify-center text-text-muted hover:text-text-primary hover:bg-slate-100 transition-colors"
+                aria-label="Close preview"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="bg-slate-950">
+              <img
+                src={activeImage.src}
+                alt={`${activeImage.service} enlarged preview`}
+                className="w-full max-h-[78vh] object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
       <PublicFooter />
     </div>
   );
