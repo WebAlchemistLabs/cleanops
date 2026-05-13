@@ -4,20 +4,19 @@
 
 A production-grade full stack SaaS application built for professional cleaning companies. It handles the entire business lifecycle from public marketing and online booking through to staff management, Stripe payments, and AI powered business intelligence. This is the kind of platform used by companies like Jobber, HouseCall Pro, and ZenMaid.
 
+[![Next.js](https://img.shields.io/badge/Next.js-14-black?style=flat-square&logo=next.js)](https://nextjs.org)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue?style=flat-square&logo=typescript)](https://www.typescriptlang.org)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38bdf8?style=flat-square&logo=tailwind-css)](https://tailwindcss.com)
+[![Stripe](https://img.shields.io/badge/Stripe-Payments-635bff?style=flat-square&logo=stripe)](https://stripe.com)
+[![OpenAI](https://img.shields.io/badge/OpenAI-GPT--4o-412991?style=flat-square&logo=openai)](https://openai.com)
+
 ---
 
-## Get It Running in 60 Seconds
+## Live Demo
 
-No environment variables are required. The app runs fully in demo mode out of the box.
+**View the deployed application at https://cleanops-eta.vercel.app/**
 
-```bash
-git clone https://github.com/yourusername/pristine-pro
-cd pristine-pro
-npm install
-npm run dev
-```
-
-Open http://localhost:3000 and the full application is live with realistic pre-seeded data.
+No signup required. Use the credentials below to explore every role and every feature of the platform immediately.
 
 ---
 
@@ -30,6 +29,43 @@ Three roles are available to evaluate every surface of the platform.
 | Admin | admin@cleanopsai.com | Admin123! | Full platform access including all data, analytics, AI, and payments |
 | Manager | manager@cleanopsai.com | Manager123! | Operations dashboard with job and crew management |
 | Customer | sarah@example.com | Customer123! | Customer portal showing real booking history, invoices, and pay buttons |
+
+---
+
+## Screenshots
+
+**Admin Dashboard**
+
+![Admin Dashboard](screenshots/dashboard-preview.png)
+
+The operational core of the platform. KPI cards, a twelve month revenue chart, AI business insights, recent jobs, and a live activity log all visible on a single screen.
+
+**Jobs and Bookings**
+
+![Jobs and Bookings](screenshots/jobs-bookings.png)
+
+Full job management with status pipeline, crew assignment, service badges, and per-job Stripe payment initiation built into each card.
+
+**Customer Booking Flow**
+
+![Customer Booking Flow](screenshots/customer-booking-flow.png)
+
+The public three step booking wizard. Customers choose a service with a real photo, enter their property details, and submit a request without needing an account.
+
+---
+
+## Get It Running Locally
+
+No environment variables are required. The app runs fully in demo mode out of the box.
+
+```bash
+git clone https://github.com/MarlonHaynes/cleanops-ai
+cd pristine-pro
+npm install
+npm run dev
+```
+
+Open http://localhost:3000 and the full application is live with realistic pre-seeded data.
 
 ---
 
@@ -127,6 +163,10 @@ A floating chat widget on every admin page shown only to Admin and Manager roles
 
 ```
 pristine-pro/
+├── screenshots/
+│   ├── dashboard-preview.png
+│   ├── jobs-bookings.png
+│   └── customer-booking-flow.png
 ├── app/
 │   ├── (public)/
 │   │   ├── services/page.tsx
@@ -285,4 +325,4 @@ Built by Marlon Haynes at WebAlchemistLabs
 
 This project demonstrates full stack product engineering across the entire stack including database schema design, API architecture, authentication systems, third-party integrations, component library design, and polished UI work. Every decision is explainable and every feature is production deployable.
 
-Available for full-time and contract opportunities. Reach out at your-email@example.com
+Available for full-time and contract opportunities. Reach out at marlon.haynes.dev@gmail.com
